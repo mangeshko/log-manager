@@ -3,21 +3,10 @@
 include_once('config_functions.php');
 use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
 
-$URL_ROOT   = "";
-$ROOT       = dirname(dirname(__FILE__));   // physical path to engine root
 $DATA_DIR   = dirname($_SERVER['DOCUMENT_ROOT']) . '/data';
 $CLIENTS_DIR    = "$DATA_DIR/clients";
-
-
 $CLIENT_NAME = $_SERVER['TESTDIR'];
-
-/* $cinet= $CLIENTS_DIR;
-$clname = $CLIENT_NAME;
-*/
-
 $logPath=$CLIENTS_DIR.'/'.$CLIENT_NAME.'/logs';
-$newlogpath=storage_path($logPath);
-
 
 return [
     'exclude-levels' => ['all', 'info'],
