@@ -49,7 +49,7 @@ class StatsTable extends AbstractTable
     {
         return array_merge_recursive(
             [
-                'date' => __('Date'),
+                'date' => __('File Names'),
                 'all'  => __('All'),
             ],
             $this->levels->names($this->locale)

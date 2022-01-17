@@ -316,7 +316,7 @@ class Filesystem implements FilesystemContract
      */
     private function getLogPath(string $date)
     {
-        $path = $this->storagePath.DIRECTORY_SEPARATOR.$this->prefixPattern.$date.$this->extension;
+        $path = $this->storagePath.DIRECTORY_SEPARATOR.$date;
 
         if ( ! $this->filesystem->exists($path)) {
             throw FilesystemException::invalidPath($path);
@@ -335,7 +335,7 @@ class Filesystem implements FilesystemContract
     private function extractDates(array $files)
     {
         return array_map(function ($file) {
-            return LogParser::extractDate(basename($file));
+            return basename($file);
         }, $files);
     }
 }

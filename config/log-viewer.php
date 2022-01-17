@@ -1,15 +1,33 @@
 <?php
 
+include_once('config_functions.php');
 use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
 
+$URL_ROOT   = "";
+$ROOT       = dirname(dirname(__FILE__));   // physical path to engine root
+$DATA_DIR   = dirname($_SERVER['DOCUMENT_ROOT']) . '/data';
+$CLIENTS_DIR    = "$DATA_DIR/clients";
+
+
+$CLIENT_NAME = $_SERVER['TESTDIR'];
+
+/* $cinet= $CLIENTS_DIR;
+$clname = $CLIENT_NAME;
+*/
+
+$logPath=$CLIENTS_DIR.'/'.$CLIENT_NAME.'/logs';
+$newlogpath=storage_path($logPath);
+
+
 return [
+    'exclude-levels' => ['all', 'info'],
 
     /* -----------------------------------------------------------------
      |  Log files storage path
      | -----------------------------------------------------------------
      */
 
-    'storage-path'  => storage_path('logs'),
+    'storage-path'  => $logPath,
 
     /* -----------------------------------------------------------------
      |  Log files pattern
@@ -17,8 +35,8 @@ return [
      */
 
     'pattern'       => [
-        'prefix'    => Filesystem::PATTERN_PREFIX,    // 'laravel-'
-        'date'      => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+        'prefix'    => '*',    // '* to include all log files'
+        'date'      => null,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
         'extension' => Filesystem::PATTERN_EXTENSION, // '.log'
     ],
 

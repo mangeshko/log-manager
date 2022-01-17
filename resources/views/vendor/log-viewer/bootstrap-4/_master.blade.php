@@ -218,14 +218,14 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark p-0">
-        <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand mr-0">
+        <a href="?loc=loglist" class="navbar-brand mr-0">
             <i class="fa fa-fw fa-book"></i> LogViewer
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <!--<ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                     <a href="{{ route('log-viewer::dashboard') }}" class="nav-link">
                         <i class="fa fa-dashboard"></i> @lang('Dashboard')
@@ -236,7 +236,7 @@
                         <i class="fa fa-archive"></i> @lang('Logs')
                     </a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </nav>
 
@@ -251,9 +251,6 @@
         <div class="container-fluid">
             <p class="text-muted pull-left">
                 LogViewer - <span class="badge badge-info">version {{ log_viewer()->version() }}</span>
-            </p>
-            <p class="text-muted pull-right">
-                Created with <i class="fa fa-heart"></i> by ARCANEDEV <sup>&copy;</sup>
             </p>
         </div>
     </footer>

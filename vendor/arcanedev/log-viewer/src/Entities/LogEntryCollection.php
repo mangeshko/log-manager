@@ -81,7 +81,8 @@ class LogEntryCollection extends LazyCollection
     public function stats()
     {
         $counters = $this->initStats();
-
+        $exclude_levels = array_flip(['all', 'info', 'emergency', 'alert', 'critical', 'error', 'warning', 'notice', 'debug']);
+        $counters = array_diff_key($counters, $exclude_levels);
         foreach ($this->groupBy('level') as $level => $entries) {
             $counters[$level] = $count = count($entries);
             $counters['all'] += $count;

@@ -84,6 +84,8 @@ class LogViewerController extends Controller
     {
         $stats   = $this->logViewer->statsTable();
         $headers = $stats->header();
+        $exclude_levels = array_flip(['all', 'info', 'emergency', 'alert', 'critical', 'error', 'warning', 'notice', 'debug']);
+        $headers = array_diff_key($headers, $exclude_levels);
         $rows    = $this->paginate($stats->rows(), $request);
 
         return $this->view('logs', compact('headers', 'rows'));
@@ -169,8 +171,9 @@ class LogViewerController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function download($date)
+    public function download($date = null)
     {
+        $date = $_REQUEST['dwdate'];
         return $this->logViewer->download($date);
     }
 
